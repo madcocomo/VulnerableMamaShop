@@ -2,15 +2,15 @@
 
 $stmt = false;
 
-if(isset($_SERVER['REQUEST_METHOD'])  &&  strcasecmp("post", $_SERVER['REQUEST_METHOD'] ) == 0)
+if( isset($_REQUEST['catid']) )
 {
 
-   if(!isset($_POST['catid']) )
+   if(!isset($_REQUEST['catid']) )
    {
        die("Invalid category selected !");
    }
    
-   $catid = $_POST['catid'];
+   $catid = $_REQUEST['catid'];
    //echo "catid is " . $catid . "\n";
    
 
@@ -97,18 +97,15 @@ header('Content-Type: text/html; charset=UTF-8');
    <p class="font-weight-bold">Select a Category to see items on sale.<br>
    <small>选择产品类别</small>
    </p>
-   <p>  
-   <form action="welcome.php" method="POST">
-    <select name="catid">
-       <option value="1000">Drinks</option>
-       <option value="1001">Snacks</option>
-       <option value="1002">Fruits</option>
-       <option value="1003">Lunch boxes</option>
-    </select>
-    
-    <input type="submit" value="Submit">
-   </form>
-   </p>
+
+<p>
+<ul>
+<li> <a href="welcome.php?catid=1000">Drinks</a> </li>
+<li> <a href="welcome.php?catid=1001">Snacks</a> </li>
+<li> <a href="welcome.php?catid=1002">Fruits</a> </li>
+<li> <a href="welcome.php?catid=1003">Lunch boxes</a> </li>
+</ul>
+</p>
   <?php
 
   if($stmt!== False)

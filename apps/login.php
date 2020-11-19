@@ -33,8 +33,10 @@ if(isset($_SERVER['REQUEST_METHOD'])  &&  strcasecmp("post", $_SERVER['REQUEST_M
     try
     {
        $pdo = new PDO($dsn, $user, $pass, $opt); 
-       $stmt = $pdo->prepare('SELECT * FROM users where email=? and password=?');
-       $stmt->execute([$email, $password]);
+       #$stmt = $pdo->prepare('SELECT * FROM users where email=? and password=?');
+       #$stmt->execute([$email, $password]);
+       $stmt = $pdo->prepare("SELECT * FROM users where email='$email' and password='$password'");
+       $stmt->execute();
        $result = $stmt->fetch();
        
        if($result)
